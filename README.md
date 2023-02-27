@@ -7,9 +7,8 @@ Optional - clean start
 docker image prune -a # removes all docker images
 ```
 
-Build local docker distribution for both master and latest-1 (ie. if master is 8.0.0 then latest-1 is the 7.x branch)
+Build local docker distribution for both versions
 
-Do this for both the master branch and latest-1 branch
 ```bash
 ./gradlew :distribution:docker:assemble # elder 
 
@@ -19,7 +18,7 @@ or
 
 ```
 
-Ensure docker images are installed, we should have the latest and latest-1 images (also ensure create time is correct)
+Ensure both docker images are installed.
 ```bash
 docker images | grep elasticsearch
 ```
@@ -49,7 +48,7 @@ Optional: In `docker-compose.yml` uncomment Kibana and point it to the desired h
 
 To stop a node
 ```
-docker stop elasticsearch2
+docker-compose stop elasticsearch[1|2|3]
 ```
 
 To upgrade a node, change the version then
@@ -58,3 +57,10 @@ To upgrade a node, change the version then
 docker-compose up -d --no-deps elasticsearch[1|2|3]
 ```
 
+Double check the versions and send command directly to desired host
+
+```bash
+curl -v localhost:9200
+curl -v localhost:9201
+curl -v localhost:9202
+```
