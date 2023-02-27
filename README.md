@@ -47,8 +47,14 @@ curl -v localhost:9202
 Optional: In `docker-compose.yml` uncomment Kibana and point it to the desired host.
 
 
+To stop a node
+```
+docker stop elasticsearch2
+```
+
 To upgrade a node, change the version then
 ```bash
 
 docker-compose up -d --no-deps elasticsearch[1|2|3]
 ```
+
