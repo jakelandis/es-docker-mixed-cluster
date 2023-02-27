@@ -1,11 +1,22 @@
 Mixed Cluster Docker for testing
 ----------
 
+Optional - clean start
+
+```
+docker image prune -a # removes all docker images
+```
+
 Build local docker distribution for both master and latest-1 (ie. if master is 8.0.0 then latest-1 is the 7.x branch)
 
 Do this for both the master branch and latest-1 branch
 ```bash
-./gradlew :distribution:docker:assemble
+./gradlew :distribution:docker:assemble # elder 
+
+or
+
+./gradlew :distribution:docker:buildDockerImage #newer
+
 ```
 
 Ensure docker images are installed, we should have the latest and latest-1 images (also ensure create time is correct)
